@@ -1,0 +1,10 @@
+def main(x, y):  # от 3 до 15 с обходом 8
+    if x > y or x == 8:
+        return 0
+    if x == y:
+        return 1
+    else:
+        return main(x + 1, y) + main(x + 2, y) + main(x + 3, y)
+
+
+print(main(3, 15))
