@@ -1,0 +1,43 @@
+from math import fabs
+
+
+def is_odd(n):
+    if n % 2 == 1:
+        return True  # № если нечетное, то возвращает тру
+    return False
+
+
+def is_del_3(n):
+    if n % 3 == 0:
+        return True
+    return False
+
+list_digit = []
+count = 0
+with open('17.txt', mode='r') as f:
+    file = f.read()
+    file = file.split('\n')
+    prev = 0
+    max_dif = -1
+    min_digit = 11111000
+    count_max = 0
+    for j in file:
+        j = int(j)
+        if is_odd(j):
+            if j < min_digit:
+                min_digit = j
+    for i in file:
+        i = int(i)
+        count_del = 0
+        if is_del_3(i):
+            count_del += 1
+        if is_del_3(prev):
+            count_del += 1
+        if count_del == 1:
+            if fabs(i - prev) < min_digit:
+                list_digit.append((prev, i))
+                count += 1
+
+        prev = i
+
+print(count)
