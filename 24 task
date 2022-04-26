@@ -1,0 +1,15 @@
+with open('24.txt', mode='r') as f:
+    file = f.read()
+    file = file.rstrip()
+    file = file.split('A')
+    count = 0
+    for i in file:
+        if len(i) + 2 >= 12:
+            count_b = 0
+            for j in i:
+                if 'B' == j:
+                    count_b += 1
+            if count_b >= 2:
+                count += 1
+
+print(count)
