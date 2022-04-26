@@ -1,39 +1,27 @@
-def task(n):
-    n = str(n)
-    list_digit = []
-    for i in range(len(n) + 1):
-        try:
-            s = n[i] + n[i + 1]
-            list_digit.append(s)
+file = open("D:\\Изображения\\22.txt")
+s = file.read()
+file.close()
 
-        except IndexError:
-            pass
-    try:
-        min_digit = min(list_digit)
-        max_digit = max(list_digit)
-        answer = int(min_digit) + int(max_digit)
-        return answer
-    except Exception:
-        pass
-
-for i in range(0, 1000000):
-    if task(i) == 153:
-        print(i)
-        break
-
-
-def task_6(s):
-    s = s // 7
-    n = 1
-    while s < 255:
-        s += n
-        n += 1
-    return n
-
-
+in_group = False
 count = 0
-for i in range(0, 10000000):
-    if task_6(i) == 8:
+c_count = 0
+g_count = 0
+
+for c in s:
+    if c == 'D':
+        if in_group:
+            in_group = False
+
+            if count >= 10 and c_count >= 2:
+                g_count += 1
+        else:
+            in_group = True
+            count = 1
+
+    if in_group:
         count += 1
 
-print(count)
+        if c == 'C':
+            c_count += 1
+
+print(g_count)

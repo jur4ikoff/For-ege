@@ -1,15 +1,8 @@
-for i in range(99999999, 0, -1):
-    x = i
-    a, b = 1, 0
+s = '7' * 2022
 
-    while x > 0:
-        d = x % 10
-        a *= d
-        if d > 5:
-            b += d
+while '777' in s or '333' in s:
+    s = s.replace('777', '3', 1)
+    s = s.replace('333', '7', 1)
 
-        x //= 10
 
-    if a == 8820:
-        print(b)
-        break
+print(s)
