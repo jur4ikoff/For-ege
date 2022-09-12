@@ -1,0 +1,30 @@
+from functools import lru_cache
+
+
+def task(h):
+    a, b = h
+    return (a + 1, b), (a, b + 1), (a * 2, b), (a, b * 2)
+
+
+@lru_cache(None)
+def game(h):
+    a, b = h
+    if a + b >= 77:
+        return 'W'
+
+    if any(game(move) == 'W' for move in task(h)):  # первый петя
+        return 'P1'
+
+    if all(game(move) == 'P1' for move in task(h)):  # первый ваня
+        return 'B1'
+
+    if any(game(move) == 'B1' for move in task(h)):  # второй петя
+        return 'P2'
+
+    if all(game(move) == 'P1' or game(move) == 'P2' for move in task(h)):  # второй ваня
+        return 'B2'
+
+
+for i in range(1, 164 + 1):
+    h = (7, i)
+    print(i, game(i))
