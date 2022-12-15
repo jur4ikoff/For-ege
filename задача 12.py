@@ -1,8 +1,8 @@
-s = '7' * 2022
+s = '1' * 40 + '2' * 40
 
-while '777' in s or '333' in s:
-    s = s.replace('777', '3', 1)
-    s = s.replace('333', '7', 1)
+while '111' in s:
+    s = s.replace("111", "2", 1)
+    s = s.replace('222', '1', 1)
 
 
 print(s)
