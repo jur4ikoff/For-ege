@@ -1,15 +1,16 @@
-with open(r"D:\Downloads\informatika20.zip_pass_123\24var02.txt", 'r') as f:
+with open(file="24var04.txt", mode='r') as f:
     s = f.read()
+    s = s.replace('AB', '5')
 
     min_cnt, cur_a_cnt, cur_cnt = 1000, 0, 0
 
-    for s1 in range(len(s)):
-        if s[s1] == 'A':
-            c = s1
+    for i in range(len(s)):
+        if s[i] == '5':
+            c = i
             f = True
-            while cur_a_cnt < 35:
+            while cur_a_cnt <= 21:
                 try:
-                    if s[c] == 'A':
+                    if s[c] == '5':
                         cur_a_cnt += 1
                     cur_cnt += 1
                 except:
